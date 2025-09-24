@@ -3,11 +3,11 @@ const router = express.Router()
 const {
     createData,
     listData,
-    deleteData,    
+    deleteData,
 } = require('../controllers/projectsController')
 
 router.post('/', createData)
     .get('/', listData)
-    .delete('/:id', deleteData)
+    .delete('/:projectId', deleteData)
 
 module.exports = router;

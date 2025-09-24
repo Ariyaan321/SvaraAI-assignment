@@ -4,7 +4,7 @@ async function createData(req, res) {
     try {
         console.log('in create data----');
         const projectName = req.body.name
-        const projectExist = await Project.findOne({ ProjectName: projectName })
+        const projectExist = await Project.findOne({ name: projectName })
         if (projectExist) {
             res.status(409).json("Project already exist's")
         }
@@ -31,12 +31,12 @@ async function listData(req, res) {
 async function deleteData(req, res) {
     try {
         console.log('in delete data----');
-        const projectExist = await Project.findOne({ _id: req.params.id })
+        const projectExist = await Project.findOne({ _id: req.params.projectId })
         if (!projectExist) {
             res.status(409).json("project does not exists")
         }
         else {
-            await Project.deleteOne({ _id: req.params.id })
+            await Project.deleteOne({ _id: req.params.projectId })
             res.status(203).json("Project deleted successfully")
             console.log('deleted project----: ', projectExist);
         }
