@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const connectToMongoDB = require('./config/db')
-const userRouter = require('./routes/') // chang name of variable
-const productRouter = require('./routes/');
+const userRouter = require('./routes/projectsRoute') // chang name of variable
+const projectsRouter = require('./routes/projectsRoute');
 
 const server = express();
 server.use(cors())
@@ -13,8 +13,8 @@ connectToMongoDB();
 // Route registration for all /users routes
 server.use('/users', userRouter);
 
-// Route registration for all /products routes
-server.use('/products', productRouter);
+// Route registration for all /projects routes
+server.use('/projects', projectsRouter);
 
 // root route endpoint
 server.get('/', (req, res) => {
